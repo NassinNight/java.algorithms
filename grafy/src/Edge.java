@@ -24,6 +24,6 @@ public class Edge {
 
     @Override
     public String toString() {
-        return String.valueOf(v1+ "-" + v2);
+        return String.valueOf(v2);
     }
 }
