@@ -29,7 +29,7 @@ public class Graph {
         for (Integer r: V) {
             for(Integer c: V) {
                 if(E.contains(new Edge(r,c)))
-                    matrixx[r][c]=1;
+                    matrixx[r-1][c-1]=1;
             }
         }
         for (int[] tab : matrixx) {
@@ -60,6 +60,39 @@ public class Graph {
         System.out.println(adj);
     }
 
+
+    public void bfs(Integer s) {
+        List<Integer> answer;
+        MyQueue<Integer> queue;
+        HashMap<Integer, Integer> colors;
+        colors = new HashMap<>();
+        answer = new ArrayList<>();
+        queue = new MyQueue<>();
+        for (int i : V) {
+            colors.put(i, -1);
+        }
+        colors.replace(s, -2);
+        queue.push(s);
+        while (!queue.isEmpty()) {
+            s = queue.pop();
+            answer.add(s);
+            colors.replace(s, -2);
+            for (Edge e : adj.get(s)) {
+                if (colors.get(e.v2) == -1) {
+                    queue.push(e.v2);
+                    colors.replace(e.v2, -2);
+                }
+                if (colors.get(e.v1) == -1) {
+                    queue.push(e.v1);
+                    colors.replace(e.v1, -2);
+                }
+            }
+        }
+        System.out.println(colors);
+        queue.wyswietl();
+        System.out.println(answer);
+
+    }
     @Override
     public String toString() {
         return "Graph{" +

@@ -15,5 +15,6 @@ public class Main {
         Graph graph = new Graph(edges);
         graph.matrix();
         graph.adj();
+        graph.bfs(1);
     }
 }
